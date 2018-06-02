@@ -36,7 +36,7 @@ Fire the following command to create a network:
 ```
 docker network create replicanet
 ```
-Youj ust need to create it once, unless you remove it from Docker.
+You just need to create it once, unless you remove it from Docker.
 
 To see all Docker networks:
 ```
