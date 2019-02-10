@@ -6,11 +6,6 @@ Setting up MySQL Multi-Source Replication (M1->S and M2->S) with Docker MySQL im
 ## References
 https://dev.mysql.com/doc/refman/8.0/en/replication-multi-source.html
 
-## Prerequisites
-
-1. Docker installed
-2. Do not run while connected to VPN
-
 ## Overview
 
 We start by creating a Docker network named **replicanet**, then we are going to pull **mysql 5.7** from Docker Hub (https://hub.docker.com/r/mysql/mysql-server/) and create a replication topology with 3 nodes (2 masters and 1 slave) in different hosts.
