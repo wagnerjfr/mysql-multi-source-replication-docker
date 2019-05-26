@@ -88,7 +88,7 @@ ad3345191e8d        mysql/mysql-server:5.7   "/entrypoint.sh --se…"   34 secon
 4375760897d8        mysql/mysql-server:5.7   "/entrypoint.sh --se…"   35 seconds ago      Up 34 seconds (healthy)   3306/tcp, 33060/tcp   master1
 ```
 ## 5. Configuring masters and slave
-### 5.1 Master1
+### 5.1. Master1
 Now we’re ready start our instances and configure replication.
 
 Let's configure in **master1 node** the replication user **"repl1"**.
@@ -108,7 +108,7 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 | mysql-bin-1.000003 |      597 |              |                  | 646dea60-5dd4-11e8-b171-0242ac140002:1-2 |
 +--------------------+----------+--------------+------------------+------------------------------------------+
 ```
-### 5.2 Master2
+### 5.2. Master2
 Let's configure in **master2 node** the replication user **"repl2"**.
 
 ```
@@ -126,7 +126,7 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 | mysql-bin-1.000003 |      597 |              |                  | 6543e379-5dd4-11e8-b17e-0242ac140003:1-2 |
 +--------------------+----------+--------------+------------------+------------------------------------------+
 ```
-### 5.3 Slave
+### 5.3. Slave
 Let’s continue with the **slave** instance.
 
 M1 -> S
