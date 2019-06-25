@@ -16,26 +16,26 @@ To download the MySQL Community Edition image, the command is:
 ```
 docker pull mysql/mysql-server:tag
 ```
-If :tag is omitted, the latest tag is used, and the image for the latest GA version of MySQL Server is downloaded.
+If `:tag` is omitted, the latest tag is used, and the image for the `latest` GA version of MySQL Server is downloaded.
 
 Examples:
 ```
-docker pull mysql/mysql-server
-docker pull mysql/mysql-server:5.7
-docker pull mysql/mysql-server:8.0
+$ docker pull mysql/mysql-server
+$ docker pull mysql/mysql-server:5.7
+$ docker pull mysql/mysql-server:8.0
 ```
 In this example, we are going to use ***mysql/mysql-server:5.7***
 
 ## 3. Creating a Docker network
 Fire the following command to create a network:
 ```
-docker network create replicanet
+$ docker network create replicanet
 ```
 You just need to create it once, unless you remove it from Docker.
 
 To see all Docker networks:
 ```
-docker network ls
+$ docker network ls
 ```
 ## 4. Creating 3 MySQL containers
 
@@ -72,7 +72,7 @@ docker run -d --rm --name=slave --net=replicanet --hostname=slave \
 ```
 It's possible to see whether the containers are started by running:
 ```
-docker ps -a
+$ docker ps -a
 ```
 ```console
 CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS                             PORTS                 NAMES
@@ -92,7 +92,6 @@ ad3345191e8d        mysql/mysql-server:5.7   "/entrypoint.sh --se…"   34 secon
 Now we’re ready start our instances and configure replication.
 
 Let's configure in **master1 node** the replication user **"repl1"**.
-
 ```
 docker exec -it master1 mysql -uroot -pmypass \
   -e "CREATE USER 'repl1'@'%' IDENTIFIED BY 'slavepass';" \
@@ -110,7 +109,6 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 ```
 ### 5.2. Master2
 Let's configure in **master2 node** the replication user **"repl2"**.
-
 ```
 docker exec -it master2 mysql -uroot -pmypass \
   -e "CREATE USER 'repl2'@'%' IDENTIFIED BY 'slavepass';" \
@@ -145,7 +143,7 @@ docker exec -it slave mysql -uroot -pmypass \
 ```
 Let's start replication and check whether it's working..
 ```
-docker exec -it slave mysql -uroot -pmypass -e "START SLAVE;" -e "SHOW SLAVE STATUS\G"
+$ docker exec -it slave mysql -uroot -pmypass -e "START SLAVE;" -e "SHOW SLAVE STATUS\G"
 ```
 Slave output:
 ```console
@@ -186,7 +184,7 @@ Now it's time to test whether data is replicated to slave.
 
 We are going to create a new database named "TEST1" in master1 and "TEST2" in master2.
 ```
-docker exec -it master1 mysql -uroot -pmypass -e "CREATE DATABASE TEST1; SHOW DATABASES;"
+$ docker exec -it master1 mysql -uroot -pmypass -e "CREATE DATABASE TEST1; SHOW DATABASES;"
 ```
 Master1 output:
 ```console
@@ -202,7 +200,7 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 +--------------------+
 ```
 ```
-docker exec -it master2 mysql -uroot -pmypass -e "CREATE DATABASE TEST2; SHOW DATABASES;"
+$ docker exec -it master2 mysql -uroot -pmypass -e "CREATE DATABASE TEST2; SHOW DATABASES;"
 ```
 Master2 output:
 ```console
@@ -248,17 +246,17 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 
 #### Stopping running container(s):
 ```
-docker stop master1 master2 slave
+$ docker stop master1 master2 slave
 ```
 #### Removing the data directories created (they are located in the folder were the containers were run):
 ```
-sudo rm -rf d0 d1 d2
+$ sudo rm -rf d0 d1 d2
 ```
 #### Removing the created network:
 ```
-docker network rm replicanet
+$ docker network rm replicanet
 ```
 #### Removing MySQL image:
 ```
-docker rmi mysql/mysql-server:5.7
+$ docker rmi mysql/mysql-server:5.7
 ```
