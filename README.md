@@ -1,5 +1,5 @@
 # Multi-Source Replication with Docker MySQL Images
-Setting up MySQL Multi-Source Replication (M1->S and M2->S) with Docker MySQL images
+Setting up MySQL Multi-Source Replication (M1➡S and M2➡S) with Docker MySQL images
 
 #### Replication enables data from one MySQL database server (the master) to be copied to one or more MySQL database servers (the slaves).
 
@@ -127,14 +127,14 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 ### 5.3. Slave
 Let’s continue with the **slave** instance.
 
-M1 -> S
+M1 ➡ S
 ```
 docker exec -it slave mysql -uroot -pmypass \
   -e "CHANGE MASTER TO MASTER_HOST='master1', MASTER_USER='repl1', \
     MASTER_PASSWORD='slavepass', MASTER_AUTO_POSITION = 1 \
     FOR CHANNEL 'master1';"
 ```
-M2 -> S
+M2 ➡ S
 ```
 docker exec -it slave mysql -uroot -pmypass \
   -e "CHANGE MASTER TO MASTER_HOST='master2', MASTER_USER='repl2', \
@@ -182,7 +182,7 @@ You can see that both **Slave_IO_Running: Yes** and **Slave_SQL_Running: Yes** a
 ## 6. Inserting some data
 Now it's time to test whether data is replicated to slave.
 
-We are going to create a new database named "TEST1" in master1 and "TEST2" in master2.
+We are going to create a new database named `TEST1` in master1 and `TEST2` in master2.
 ```
 $ docker exec -it master1 mysql -uroot -pmypass -e "CREATE DATABASE TEST1; SHOW DATABASES;"
 ```
