@@ -177,7 +177,7 @@ Slave output:
                              ...
 ```
 
-You can see that both **Slave_IO_Running: Yes** and **Slave_SQL_Running: Yes** are running.
+You can see that both `Slave_IO_Running: Yes` and `Slave_SQL_Running: Yes` are running.
 
 ## 6. Inserting some data
 Now it's time to test whether data is replicated to slave.
