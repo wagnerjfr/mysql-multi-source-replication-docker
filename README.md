@@ -186,7 +186,7 @@ We are going to create a new database named `TEST1` in master1 and `TEST2` in ma
 ```
 $ docker exec -it master1 mysql -uroot -pmypass -e "CREATE DATABASE TEST1; SHOW DATABASES;"
 ```
-Master1 output:
+**Master1** output:
 ```console
 mysql: [Warning] Using a password on the command line interface can be insecure.
 +--------------------+
@@ -202,7 +202,7 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 ```
 $ docker exec -it master2 mysql -uroot -pmypass -e "CREATE DATABASE TEST2; SHOW DATABASES;"
 ```
-Master2 output:
+**Master2** output:
 ```console
 mysql: [Warning] Using a password on the command line interface can be insecure.
 +--------------------+
@@ -222,7 +222,7 @@ docker exec -it slave mysql -uroot -pmypass \
   -e "SHOW VARIABLES WHERE Variable_name = 'hostname';" \
   -e "SHOW DATABASES;"
 ```
-Slave output:
+**Slave** output:
 ```console
 mysql: [Warning] Using a password on the command line interface can be insecure.
 +---------------+-------+
