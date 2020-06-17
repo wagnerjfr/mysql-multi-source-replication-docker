@@ -1,5 +1,5 @@
 # Multi-Source Replication with Docker MySQL Images
-Setting up MySQL Multi-Source Replication (M1➡S and M2➡S) with Docker MySQL images
+Setting up MySQL Multi-Source Replication (M1 ⭢ S and M2 ⭢ S) with Docker MySQL images
 
 #### Replication enables data from one MySQL database server (the master) to be copied to one or more MySQL database servers (the slaves).
 
