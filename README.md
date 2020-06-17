@@ -127,14 +127,14 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 ### 5.3. Slave
 Let’s continue with the **slave** instance.
 
-M1 ➡ S
+M1 ⭢ S
 ```
 docker exec -it slave mysql -uroot -pmypass \
   -e "CHANGE MASTER TO MASTER_HOST='master1', MASTER_USER='repl1', \
     MASTER_PASSWORD='slavepass', MASTER_AUTO_POSITION = 1 \
     FOR CHANNEL 'master1';"
 ```
-M2 ➡ S
+M2 ⭢ S
 ```
 docker exec -it slave mysql -uroot -pmypass \
   -e "CHANGE MASTER TO MASTER_HOST='master2', MASTER_USER='repl2', \
